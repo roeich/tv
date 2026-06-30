@@ -8,11 +8,12 @@ const tick = document.getElementById("tickSound");
 
 let autoplayDelay = 0;
 
-const swiper = new Swiper(".channelSwiper", {
+const swiper = new Swiper(".channel_swiper", {
 
     slidesPerView:'auto',
 
     spaceBetween:20,
+    slidesPerView: 6,
 
     centeredSlides:true,
 

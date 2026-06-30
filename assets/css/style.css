@@ -48,26 +48,52 @@ body {
 
 
 /*  */
-.channelSwiper{
+.tv_controller{
+    position: absolute;
+    z-index: 2;
+    bottom: 7%;
+    right: 5.5%;
+    display: flex;
+    width: 17.4%;
+    justify-content: space-between;
+}
+.tv_controller button{
+    display: block;
+    width: 50px;
+    height: 50px;
+    background: rgba(255, 0, 0, 0.212);
+    border-radius: 50%;
+}
+.channel_btns_wrapper{
+    position: absolute;
+    top: 83%;
+    left: 3.4%;
+    width: 70.4%;
+    z-index: 20px;
+    z-index: 2;
+}
+.channel_swiper{
     width:100%;
     overflow:hidden;
-    margin-top:20px;
 }
 
-.channelSwiper .swiper-wrapper{
+.channel_swiper .swiper-wrapper{
     align-items:center;
 }
 
-.channelSwiper .swiper-slide{
-    width:90px;
+.channel_swiper .swiper-slide{
+    /* width:90px; */
     display:flex;
     justify-content:center;
 }
 
 .channel_btn img{
-    width:70px;
-    height:70px;
-    border-radius:50%;
+    width: 100%;
+    /* height: 100%; */
+    border-radius: 50%;
+    border: 1px dashed gray;
+    padding: 14%;
+    aspect-ratio: 1 / 1;
 }
 
 .controller{
