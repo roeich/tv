@@ -1,0 +1,108 @@
+* {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0px;
+    display: grid;
+    place-items: center;
+    min-height: 100svh;
+    background-image: linear-gradient(to right, #0003,#0003),url('../img/emoji.jpg');
+    background-size: cover,17%;
+}
+
+.tv_iframe {
+    position: relative;
+    width: 50%;
+    background-size: contain;
+}
+
+.tv_iframe::before {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 0px;
+    padding-bottom: 80%;
+    background-image:url('../img/tv-frame.webp');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
+    position: relative;
+    z-index: 2;
+}
+
+.tv_video {
+    position: absolute;
+    top: 8%;
+    left: 5%;
+    -ms-transform: translate(-50%, -50%);
+    width: 76%;
+    height: 61%;
+    -o-object-fit: cover;
+    object-fit: cover;
+    border-radius: 5%;
+    background: -o-radial-gradient(#d1f5ff, #2ac8ff);
+    background: radial-gradient(#d1f5ff, #2ac8ff);
+}
+
+
+/*  */
+.channelSwiper{
+    width:100%;
+    overflow:hidden;
+    margin-top:20px;
+}
+
+.channelSwiper .swiper-wrapper{
+    align-items:center;
+}
+
+.channelSwiper .swiper-slide{
+    width:90px;
+    display:flex;
+    justify-content:center;
+}
+
+.channel_btn img{
+    width:70px;
+    height:70px;
+    border-radius:50%;
+}
+
+.controller{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:15px;
+    margin-top:20px;
+}
+
+.controller button{
+    padding:8px 20px;
+    cursor:pointer;
+}
+@media(max-width:991.98px){
+    body {
+        background-size: cover,24%;
+    }
+    .tv_iframe {
+        width: 80%;
+    }
+}
+@media(max-width:768.98px){
+    body {
+        background-size: cover,30%;
+    }
+    .tv_iframe {
+        width: 90%;
+    }
+}
+@media(max-width:575.98px){
+    body {
+        background-size: cover,40%;
+    }
+    .tv_iframe {
+        width: 95%;
+    }
+}

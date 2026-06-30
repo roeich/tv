@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/swiper-bundle.min.css">
+    <title>Watch TV</title>
+</head>
+<body>
+    <div class="tv_iframe">
+
+        <video id="tv_video" class="tv_video" muted playsinline autoplay loop></video>
+
+        <div class="controller">
+
+            <button id="speedDown">-</button>
+
+            <span>Tap emoticon to change channel</span>
+
+            <button id="speedUp">+</button>
+
+        </div>
+
+        <div class="swiper channelSwiper">
+
+            <div class="swiper-wrapper">
+
+                <div class="swiper-slide">
+                    <a class="channel_btn" href="video-1.mp4">
+                        <img src="assets/img/emoji.jpg">
+                    </a>
+                </div>
+
+                <div class="swiper-slide">
+                    <a class="channel_btn" href="video-2.mp4">
+                        <img src="assets/img/emoji.jpg">
+                    </a>
+                </div>
+
+                <div class="swiper-slide">
+                    <a class="channel_btn" href="video-3.mp4">
+                        <img src="assets/img/emoji.jpg">
+                    </a>
+                </div>
+
+                <!-- যত খুশি slide -->
+            </div>
+
+        </div>
+
+    </div>
+
+    <audio id="tickSound" src="assets/audio/scroll.mp3" preload="auto"></audio>
+
+    <script src="assets/js/swiper-bundle.min.js"></script>
+    <script src="assets/js/script.js"></script>
+</body>
+
+</html>
