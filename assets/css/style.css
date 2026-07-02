@@ -8,13 +8,14 @@ body {
     display: grid;
     place-items: center;
     min-height: 100svh;
-    background-image: linear-gradient(to right, #0003, #0003), url('../img/emoji.jpg');
-    background-size: cover, 17%;
+    background-image: linear-gradient(to right, #0003, #0003), url('../img/bg.webp');
+    background-size: cover, cover;
+    background-repeat: no-repeat;
 }
 
 .tv_iframe {
     position: relative;
-    width: 720px;
+    width: 680px;
     background-size: contain;
 }
 
@@ -23,8 +24,9 @@ body {
     display: block;
     width: 100%;
     height: 0px;
-    padding-bottom: 80%;
-    background-image: url('../img/tv-frame.webp');
+    padding-bottom: 91%;
+    background-image: url('../img/tv_frame.png');
+    background-image: url('../img/tv_frame.webp');
     background-repeat: no-repeat;
     background-position: center center;
     background-size: contain;
@@ -34,14 +36,14 @@ body {
 
 #tv_video {
     position: absolute;
-    top: 8%;
-    left: 5%;
+    top: 5%;
+    left: 5.5%;
+    width: 89%;
+    height: 57%;
+    border-radius: 4%;
     -ms-transform: translate(-50%, -50%);
-    width: 76%;
-    height: 61%;
     -o-object-fit: cover;
     object-fit: cover;
-    border-radius: 5%;
     background: -o-radial-gradient(#d1f5ff, #2ac8ff);
     background: radial-gradient(#d1f5ff, #2ac8ff);
 }
@@ -51,75 +53,75 @@ body {
 .controls {
     position: absolute;
     z-index: 2;
-    bottom: 7.9%;
-    right: 5.6%;
+    bottom: 26.9%;
+    right: 4px;
     display: flex;
-    width: 17%;
     justify-content: space-between;
+    flex-direction: column;
+    gap: 3px;
 }
 
 .controls button {
     display: block;
-    width: 36%;
+    width: 48px;
     height: auto;
-    background: rgba(255, 0, 0, 0.212);
-    background: transparent;
+    background: white;
     border-radius: 50%;
     aspect-ratio: 1 / 1;
     cursor: pointer;
+    border: 3px solid #9d9284;
+    font-size: 20px;
 }
 
 #speedValue {
     position: absolute;
-    right: -8%;
-    bottom: 154%;
+    right: 106%;
+    bottom: 38%;
     z-index: 2;
     color: white;
-    background: #8080804a;
+    background: #928b7e;
     padding: 4px 6px;
     border-radius: 5px;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 14px;
 }
 
+.channel_btn {
+    --bg_color: gold;
+}
+
 .channel_btn img {
     width: 100%;
     /* height: 100%; */
     border-radius: 50%;
-    border: 1px dashed gray;
+    border: 3px solid #808080b5;
     padding: 14%;
     aspect-ratio: 1 / 1;
+    box-shadow:
+        0px 0px 1px 1px #000000b5, inset 0px 0px 5px 1px #000000b5, inset 0px 0px 10px 5px #ffffff59;
+    background-image: radial-gradient(circle at center, #0000002b, #000000db);
+    background-color: var(--bg_color);
 }
 
 @media(max-width:991.98px) {
-    body {
-        background-size: cover, 24%;
-    }
-
     .tv_iframe {
         width: 720px;
     }
 }
 
 @media(max-width:768.98px) {
-    body {
-        background-size: cover, 30%;
-    }
-
     .tv_iframe {
         width: 560px;
     }
 }
 
 @media(max-width:575.98px) {
-    body {
-        background-size: cover, 40%;
-    }
 
     .tv_iframe {
         width: 460px;
     }
 }
+
 @media(max-width:469.98px) {
 
     .tv_iframe {
@@ -132,35 +134,13 @@ body {
 
 .channel_wrapper {
     position: absolute;
-    top: 83%;
-    left: 3.8%;
-    right: 26.5%;
+    top: 74%;
+    left: 2.8%;
+    right: 2.5%;
     z-index: 20px;
     z-index: 2;
     overflow: hidden;
     user-select: none;
-}
-
-.channel_wrapper::before ,
-.channel_wrapper::after {
-  content: "";
-  display: block;
-  position: absolute;
-  top: 0px;
-  width: 30px;
-  bottom: 0px;
-  z-index: 2;
-  pointer-events: none;
-  
-}
-
-.channel_wrapper::before {
-    left: 0px;
-    background: linear-gradient(to right, #141414,#14141400);
-}
-.channel_wrapper::after {
-    right: 0px;
-    background: linear-gradient(to left, #141414,#14141400);
 }
 
 .channel_track {
@@ -177,22 +157,23 @@ body {
 
 .channel_btn {
 
-    flex: 0 0 auto;
 
+    flex: 0 0 auto;
 }
 
 .channel_btn img {
-    width: 66px;
+    width: 100px;
     display: block;
     pointer-events: none;
 
 }
 
-@media(max-width:767.98px){
+@media(max-width:767.98px) {
     .channel_btn img {
         width: 52px;
     }
-    #speedValue{
+
+    #speedValue {
         font-size: 12px;
     }
 }
@@ -201,7 +182,8 @@ body {
     .channel_btn img {
         width: 45px;
     }
-    #speedValue{
+
+    #speedValue {
         bottom: 142%;
     }
 }
