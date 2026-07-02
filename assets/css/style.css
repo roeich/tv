@@ -103,31 +103,6 @@ body {
     background-color: var(--bg_color);
 }
 
-@media(max-width:991.98px) {
-    .tv_iframe {
-        width: 720px;
-    }
-}
-
-@media(max-width:768.98px) {
-    .tv_iframe {
-        width: 560px;
-    }
-}
-
-@media(max-width:575.98px) {
-
-    .tv_iframe {
-        width: 460px;
-    }
-}
-
-@media(max-width:469.98px) {
-
-    .tv_iframe {
-        width: 360px;
-    }
-}
 
 
 /* GSAP */
@@ -168,9 +143,22 @@ body {
 
 }
 
+
+@media(max-width:991.98px) {
+    .tv_iframe {
+        width: 720px;
+    }
+    .controls button{
+        width: 39px;
+    }
+}
+
 @media(max-width:767.98px) {
+    .tv_iframe {
+        width: 560px;
+    }
     .channel_btn img {
-        width: 52px;
+        width: 84px;
     }
 
     #speedValue {
@@ -178,18 +166,24 @@ body {
     }
 }
 
-@media (max-width: 575.98px) {
-    .channel_btn img {
-        width: 45px;
-    }
 
-    #speedValue {
-        bottom: 142%;
+@media(max-width:575.98px) {
+
+    .tv_iframe {
+        width: 460px;
+    }
+    .channel_btn img {
+        width: 76px;
     }
 }
 
-@media (max-width: 469.98px) {
+
+@media(max-width:469.98px) {
+
+    .tv_iframe {
+        width: 360px;
+    }
     .channel_btn img {
-        width: 38px;
+        width: 64px;
     }
 }
