@@ -4,6 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
     <title>Watch TV</title>
 </head>
@@ -16,37 +19,41 @@
             playsinline>
         </video>
 
-        <div class="controls">
+        <!-- <div class="controls">
 
             <button id="speedUp">+</button>
             <span id="speedValue">1.0x</span>
             <button id="speedDown">-</button>
 
 
-        </div>
+        </div> -->
+
 
         <div class="channel_wrapper">
-
+            <div class="channel_heading">Tap emoji to change channel</div>
             <div class="channel_track" id="channelTrack">
-                <a class="channel_btn" style="--bg_color:#b4ebf0;" href="assets/video/video1.mp4">
-                    <img src="assets/img/btns/ant.webp">
+                <a class="channel_btn" href="assets/video/video1.mp4">
+                    <img src="assets/img/btns/btn-1.webp" alt="btn">
+                    <span class="channel_name">plumber toons</span>
                 </a>
-                <a class="channel_btn" style="--bg_color:#f9eba2;" href="assets/video/video2.mp4">
-                    <img src="assets/img/btns/baby-chick.webp">
+                <a class="channel_btn" href="assets/video/video2.mp4">
+                    <img src="assets/img/btns/btn-2.webp" alt="btn">
+                    <span class="channel_name">comedy dumps</span>
                 </a>
-                <a class="channel_btn" style="--bg_color:#b3e9e9;" href="assets/video/video1.mp4">
-                    <img src="assets/img/btns/badger.webp">
+                <a class="channel_btn" href="assets/video/video1.mp4">
+                    <img src="assets/img/btns/btn-3.webp" alt="btn">
+                    <span class="channel_name">hydro flush</span>
                 </a>
-                <a class="channel_btn" style="--bg_color:#f4a36b;" href="assets/video/video2.mp4">
-                    <img src="assets/img/btns/bat.webp">
+                <a class="channel_btn" href="assets/video/video2.mp4">
+                    <img src="assets/img/btns/btn-4.webp" alt="btn">
+                    <span class="channel_name">clog busters</span>
                 </a>
-                <a class="channel_btn" style="--bg_color:#dddad3;" href="assets/video/video1.mp4">
-                    <img src="assets/img/btns/bear.webp">
+                <a class="channel_btn" href="assets/video/video1.mp4">
+                    <img src="assets/img/btns/btn-5.webp" alt="btn">
+                    <span class="channel_name">flush watch</span>
                 </a>
             </div>
-
         </div>
-
     </div>
 
     <audio id="tickSound" src="assets/audio/scroll.mp3"></audio>
