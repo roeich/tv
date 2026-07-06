@@ -233,14 +233,12 @@ body {
 @media (orientation: portrait) {
     html{
         --vw: 1vh;
-        height: 0px;
+        max-width: max-content;
     }
     html, body {
         width: 100svh;
-        /* height: 100svw; */
-        /* width: 100vh; */
-        /* height: 100vw; */
-        overflow-x: hidden;
+        height: 100svw;
+        overflow-x: scroll;
         overflow-y: hidden;
         margin: 0;
         padding: 0;
