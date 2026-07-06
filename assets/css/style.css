@@ -98,6 +98,45 @@ body {
     background: -o-radial-gradient(#d1f5ff, #2ac8ff);
     background: radial-gradient(#d1f5ff, #2ac8ff);
 }
+.tv_live_text{
+    position: absolute;
+    z-index: 2;
+    top: 10.8vw;
+    left: 24.5vw;
+    font-size: 1.4vw;
+    font-weight: 600;
+    line-height: 1;
+    color: #fff;
+    text-transform: uppercase;
+    text-align: center;
+    letter-spacing: 0.06em;
+    transform: scaleY(1.6);
+    padding: 0.1em 0.5em;
+    background: #ec191a;
+    border-radius: 3px;
+    box-shadow: 0px 0px 3px black;
+}
+.tv_live_text::before{
+    content: "";
+    display: inline-block;
+    width: 0.6em;
+    min-width: 0.6em;
+    height: 0.5em;
+    border-radius: 50%;
+    background-color: white;
+    margin-right: 0.3em;
+    margin-bottom: 0.1em;
+    animation: pluse 1s infinite;
+}
+@keyframes pluse {
+    0%,
+    100%{
+        opacity: 0;
+    }
+    50%{
+        opacity: 1;
+    }
+}
 .tv_info{
     position: absolute;
     z-index: 2;
