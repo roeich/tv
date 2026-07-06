@@ -222,43 +222,6 @@ function playTick() {
 }
 
 
-const speedValue = document.getElementById("speedValue");
-
-function updateSpeed(){
-
-    speedValue.innerHTML = speed.toFixed(1) + "x";
-
-}
-
-updateSpeed();
-
-document.getElementById("speedUp").onclick = ()=>{
-
-    speed += .5;
-
-    if(speed > 10){
-
-        speed = 10;
-
-    }
-
-    updateSpeed();
-
-}
-
-document.getElementById("speedDown").onclick = ()=>{
-
-    speed -= .5;
-
-    if(speed < .5){
-
-        speed = .5;
-
-    }
-
-    updateSpeed();
-
-}
 document.querySelectorAll(".channel_btn").forEach(btn=>{
 
     btn.onclick=function(e){

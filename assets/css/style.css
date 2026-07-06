@@ -28,7 +28,7 @@ body {
     height: 0px;
     padding-bottom: 62.4%;
     background-image: url('../img/layout.webp');
-    /* background-image: url('../img/layout-1.webp'); */
+    background-image: url('../img/layout-2.webp');
     background-repeat: no-repeat;
     background-position: center center;
     background-size: contain;
@@ -97,6 +97,7 @@ body {
     object-fit: cover;
     background: -o-radial-gradient(#d1f5ff, #2ac8ff);
     background: radial-gradient(#d1f5ff, #2ac8ff);
+    background: url("../img/poster.webp");
 }
 .tv_live_text{
     position: absolute;
@@ -157,11 +158,11 @@ body {
     right: 23.6vw;
 }
 .tv_channel_name{
-    top: 38vw;
+    top: 37.5vw;
     left: 24vw;
 }
 .tv_video_playing {
-  top: 38vw;
+  top: 37.5vw;
   right: 24vw;
 }
 
@@ -254,11 +255,16 @@ body {
     display: block;
     pointer-events: none;
 }
+.channel_btn:hover{
+    filter: drop-shadow(0px 0px 10px #2ac8ff);
+}
 .channel_name{
     padding-top: 0.4vw;
     display: inline-block;
 }
-
+.channel_btn:hover{
+    color:#2ac8ff
+}
 
 @media(max-width:991.98px) {
     /* .tv_iframe {
