@@ -98,6 +98,7 @@ body {
     background: -o-radial-gradient(#d1f5ff, #2ac8ff);
     background: radial-gradient(#d1f5ff, #2ac8ff);
     background: url("../img/poster.webp");
+    background-size: cover;
 }
 .tv_live_text{
     position: absolute;
