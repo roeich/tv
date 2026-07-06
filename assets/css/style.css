@@ -28,20 +28,69 @@ body {
     height: 0px;
     padding-bottom: 62.4%;
     background-image: url('../img/layout.webp');
-    background-image: url('../img/layout-1.webp');
+    /* background-image: url('../img/layout-1.webp'); */
     background-repeat: no-repeat;
     background-position: center center;
     background-size: contain;
     position: relative;
     z-index: 2;
 }
+.tv_heading_left{
+    position: absolute;
+    z-index: 2;
+    top: 1.3vw;
+    left: 1vw;
+    font-size: 1.1vw;
+    font-weight: 500;
+    line-height: 1;
+    color: #bbc4c6;
+    text-transform: uppercase;
+    text-align: center;
+    letter-spacing: -0.05em;
+    text-shadow: 0px 0px 3px black;
+    transform: scaleY(1.4);
+}
+
+.tv_heading_center{
+    position: absolute;
+    z-index: 2;
+    top: 3.2vw;
+    left: 51.3%;
+    transform: translate(-50%,-50%);
+    font-size: 3.7vw;
+    font-weight: 700;
+    line-height: 1;
+    color: #bbc4c6;
+    text-transform: uppercase;
+    text-align: center;
+    letter-spacing: -0.05em;
+    text-shadow: 0px 0px 5px black;
+}
+.tv_heading_center span{
+    color:#72bde4;
+}
+.tv_heading_right{
+    position: absolute;
+    z-index: 2;
+    top: 1.3vw;
+    right: 1vw;
+    font-size: 1.1vw;
+    font-weight: 500;
+    line-height: 1;
+    color: #bbc4c6;
+    text-transform: uppercase;
+    text-align: center;
+    letter-spacing: -0.05em;
+    text-shadow: 0px 0px 3px black;
+    transform: scaleY(1.4);
+}
 
 #tv_video {
     position: absolute;
-    top: 5%;
-    left: 5.5%;
-    width: 89%;
-    height: 57%;
+    top: 13.5%;
+    left: 22.5%;
+    width: 55.6%;
+    height: 53.5%;
     border-radius: 4%;
     -ms-transform: translate(-50%, -50%);
     -o-object-fit: cover;
@@ -49,7 +98,33 @@ body {
     background: -o-radial-gradient(#d1f5ff, #2ac8ff);
     background: radial-gradient(#d1f5ff, #2ac8ff);
 }
-
+.tv_info{
+    position: absolute;
+    z-index: 2;
+    font-size: 1.1vw;
+    font-weight: 600;
+    line-height: 1;
+    color: #bbc4c6;
+    text-transform: uppercase;
+    text-align: center;
+    letter-spacing: 0.06em;
+    transform: scaleY(1.6);
+    padding: 0.2em 0.5em;
+    background: #0000009c;
+    border-radius: 5px;
+}
+.tv_video_name{
+    top: 10.5vw;
+    right: 23.6vw;
+}
+.tv_channel_name{
+    top: 38vw;
+    left: 24vw;
+}
+.tv_video_playing {
+  top: 38vw;
+  right: 24vw;
+}
 
 /*  */
 .controls {
@@ -111,6 +186,7 @@ body {
     text-transform: uppercase;
     text-align: center;
     margin-bottom: 0.8vw;
+    text-shadow: 0px 0px 5px black;
 }
 .channel_track {
     display: flex;
