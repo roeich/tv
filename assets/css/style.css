@@ -301,11 +301,11 @@ body {
     }
 
     .tv_channel_name {
-        top: calc(42 * var(--vw));
+        top: calc(41 * var(--vw));
         left: calc(9 * var(--vw));
     }
     .tv_video_playing {
-        top: calc(42 * var(--vw));
+        top: calc(41 * var(--vw));
         right: calc(8 * var(--vw));
     }
     .tv_info{
