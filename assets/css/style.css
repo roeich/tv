@@ -253,11 +253,60 @@ body {
 @media (orientation: portrait) and (max-width: 768px) {
 
     .tv_stack{
-        gap: calc(3 * var(--vw));
+        /* gap: calc(3 * var(--vw)); */
     }
 
     .tv_instance_secondary{
         display: block;
+    }
+
+    /*  */
+
+    html {
+        --vw: 1.4vw;
+    }
+    .tv_iframe::before{
+        padding-bottom: 96%;
+        background-size: cover;
+    }
+
+    .tv_heading_left,
+    .tv_heading_right{
+        display: none;
+    }
+    .tv_video {
+        top: 13%;
+        left: 7.5%;
+        width: 85.8%;
+        height: 54%;
+    }
+    .channel_wrapper {
+        top: 72.8%;
+        left: 4.4%;
+        right: 4.4%;
+    }
+
+    .tv_live_text {
+        top: calc(13 * var(--vw));
+        left: calc(9 * var(--vw));
+        box-shadow: 0px 0px 1px black;
+    }
+
+    .tv_video_name {
+        top: calc(12 * var(--vw));
+        right: calc(8 * var(--vw));
+    }
+
+    .tv_channel_name {
+        top: calc(42 * var(--vw));
+        left: calc(9 * var(--vw));
+    }
+    .tv_video_playing {
+        top: calc(42 * var(--vw));
+        right: calc(8 * var(--vw));
+    }
+    .tv_info{
+        padding:0.3em 0.5em;
     }
 }
 
