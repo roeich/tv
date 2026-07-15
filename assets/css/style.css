@@ -19,6 +19,14 @@ body {
     
 }
 
+/* ================================
+   TV STACK WRAPPER
+   ================================ */
+.tv_stack{
+    display: flex;
+    flex-direction: column;
+}
+
 .tv_iframe {
     position: relative;
     width: 100%;
@@ -89,7 +97,7 @@ body {
     transform: scaleY(1.4);
 }
 
-#tv_video {
+.tv_video {
     position: absolute;
     top: 13.5%;
     left: 22.5%;
@@ -227,10 +235,39 @@ body {
 .channel_btn:hover{
     color:#2ac8ff
 }
+
 /* ================================
-   FORCE LANDSCAPE LAYOUT IN PORTRAIT
+   DEFAULT (landscape, any device):
+   only the first TV instance shows
    ================================ */
-@media (orientation: portrait) {
+.tv_instance_secondary{
+    display: none;
+}
+
+/* ================================
+   MOBILE PORTRAIT ONLY: show both
+   TVs stacked, no rotation
+   (adjust the 768px breakpoint to
+   match your mobile/tablet cutoff)
+   ================================ */
+@media (orientation: portrait) and (max-width: 768px) {
+
+    .tv_stack{
+        gap: calc(3 * var(--vw));
+    }
+
+    .tv_instance_secondary{
+        display: block;
+    }
+}
+
+/* ================================
+   TABLET / LARGER PORTRAIT: keep the
+   old force-landscape rotate hack,
+   single TV only
+   ================================ */
+@media (orientation: portrait) and (min-width: 769px) {
+
     html{
         --vw: 1vh;
         max-width: max-content;

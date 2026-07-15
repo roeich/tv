@@ -11,66 +11,114 @@
     <title>Watch TV</title>
 </head>
 <body>
-    <div class="tv_iframe">
-        <div class="tv_heading_left">
-            NANO 2 TV // BROADCASTING ON ALL 390 DOMAINS
-        </div>
-        <div class="tv_heading_center">
-            <span>Nano</span> TV
-        </div>
-        <div class="tv_heading_right">
-            ETERNAL PLAYLIST LOOPER ENGINE ACTIVE
-        </div>
 
-        <video id="tv_video"
-            autoplay
-            controls
-            loop
-            playsinline>
-        </video>
-        <div class="tv_live_text">Live</div>
-        <div class="tv_info tv_video_name">PLUNGER CARTOONS: GLOOP WARS</div>
-        <div class="tv_info tv_channel_name">CH 01: PLUNGER TOONS</div>
-        <div class="tv_info tv_video_playing">PLAYING: SLIME WARS | SYNCD</div>
+    <div class="tv_stack" id="tvStack">
 
-        <!-- <div class="controls">
-
-            <button id="speedUp">+</button>
-            <span id="speedValue">1.0x</span>
-            <button id="speedDown">-</button>
-
-
-        </div> -->
-
-
-        <div class="channel_wrapper">
-            <div class="channel_heading">Tap emoji to change channel</div>
-            <div class="channel_track" id="channelTrack">
-                <a class="channel_btn" href="assets/video/video1.mp4">
-                    <img src="assets/img/btns/btn-1.webp" alt="btn">
-                    <span class="channel_name">plumber toons</span>
-                </a>
-                <a class="channel_btn" href="assets/video/video2.mp4">
-                    <img src="assets/img/btns/btn-2.webp" alt="btn">
-                    <span class="channel_name">comedy dumps</span>
-                </a>
-                <a class="channel_btn" href="assets/video/video1.mp4">
-                    <img src="assets/img/btns/btn-3.webp" alt="btn">
-                    <span class="channel_name">hydro flush</span>
-                </a>
-                <a class="channel_btn" href="assets/video/video2.mp4">
-                    <img src="assets/img/btns/btn-4.webp" alt="btn">
-                    <span class="channel_name">clog busters</span>
-                </a>
-                <a class="channel_btn" href="assets/video/video1.mp4">
-                    <img src="assets/img/btns/btn-5.webp" alt="btn">
-                    <span class="channel_name">flush watch</span>
-                </a>
+        <!-- ============ TV INSTANCE 1 (always visible) ============ -->
+        <div class="tv_iframe tv_instance">
+            <div class="tv_heading_left">
+                NANO 2 TV // BROADCASTING ON ALL 390 DOMAINS
             </div>
-        </div>
-    </div>
+            <div class="tv_heading_center">
+                <span>Nano</span> TV
+            </div>
+            <div class="tv_heading_right">
+                ETERNAL PLAYLIST LOOPER ENGINE ACTIVE
+            </div>
 
-    <audio id="tickSound" src="assets/audio/scroll.mp3"></audio>
+            <video class="tv_video"
+                autoplay
+                controls
+                loop
+                muted
+                playsinline></video>
+            <div class="tv_live_text">Live</div>
+            <div class="tv_info tv_video_name">PLUNGER CARTOONS: GLOOP WARS</div>
+            <div class="tv_info tv_channel_name">CH 01: PLUNGER TOONS</div>
+            <div class="tv_info tv_video_playing">PLAYING: SLIME WARS | SYNCD</div>
+
+            <div class="channel_wrapper">
+                <div class="channel_heading">Tap emoji to change channel</div>
+                <div class="channel_track">
+                    <a class="channel_btn" href="assets/video/video1.mp4">
+                        <img src="assets/img/btns/btn-1.webp" alt="btn">
+                        <span class="channel_name">plumber toons</span>
+                    </a>
+                    <a class="channel_btn" href="assets/video/video2.mp4">
+                        <img src="assets/img/btns/btn-2.webp" alt="btn">
+                        <span class="channel_name">comedy dumps</span>
+                    </a>
+                    <a class="channel_btn" href="assets/video/video1.mp4">
+                        <img src="assets/img/btns/btn-3.webp" alt="btn">
+                        <span class="channel_name">hydro flush</span>
+                    </a>
+                    <a class="channel_btn" href="assets/video/video2.mp4">
+                        <img src="assets/img/btns/btn-4.webp" alt="btn">
+                        <span class="channel_name">clog busters</span>
+                    </a>
+                    <a class="channel_btn" href="assets/video/video1.mp4">
+                        <img src="assets/img/btns/btn-5.webp" alt="btn">
+                        <span class="channel_name">flush watch</span>
+                    </a>
+                </div>
+            </div>
+
+            <audio class="tickSound" src="assets/audio/scroll.mp3"></audio>
+        </div>
+
+        <!-- ============ TV INSTANCE 2 (portrait mode only) ============ -->
+        <div class="tv_iframe tv_instance tv_instance_secondary">
+            <div class="tv_heading_left">
+                NANO 2 TV // BROADCASTING ON ALL 390 DOMAINS
+            </div>
+            <div class="tv_heading_center">
+                <span>Nano</span> TV
+            </div>
+            <div class="tv_heading_right">
+                ETERNAL PLAYLIST LOOPER ENGINE ACTIVE
+            </div>
+
+            <video class="tv_video"
+                autoplay
+                controls
+                loop
+                muted
+                playsinline></video>
+            <div class="tv_live_text">Live</div>
+            <div class="tv_info tv_video_name">PLUNGER CARTOONS: GLOOP WARS</div>
+            <div class="tv_info tv_channel_name">CH 01: PLUNGER TOONS</div>
+            <div class="tv_info tv_video_playing">PLAYING: SLIME WARS | SYNCD</div>
+
+            <div class="channel_wrapper">
+                <div class="channel_heading">Tap emoji to change channel</div>
+                <div class="channel_track">
+                    <a class="channel_btn" href="assets/video/video1.mp4">
+                        <img src="assets/img/btns/btn-1.webp" alt="btn">
+                        <span class="channel_name">plumber toons</span>
+                    </a>
+                    <a class="channel_btn" href="assets/video/video2.mp4">
+                        <img src="assets/img/btns/btn-2.webp" alt="btn">
+                        <span class="channel_name">comedy dumps</span>
+                    </a>
+                    <a class="channel_btn" href="assets/video/video1.mp4">
+                        <img src="assets/img/btns/btn-3.webp" alt="btn">
+                        <span class="channel_name">hydro flush</span>
+                    </a>
+                    <a class="channel_btn" href="assets/video/video2.mp4">
+                        <img src="assets/img/btns/btn-4.webp" alt="btn">
+                        <span class="channel_name">clog busters</span>
+                    </a>
+                    <a class="channel_btn" href="assets/video/video1.mp4">
+                        <img src="assets/img/btns/btn-5.webp" alt="btn">
+                        <span class="channel_name">flush watch</span>
+                    </a>
+                </div>
+            </div>
+
+            <audio class="tickSound" src="assets/audio/scroll.mp3"></audio>
+        </div>
+
+    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/Draggable.min.js"></script>

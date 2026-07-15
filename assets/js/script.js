@@ -1,242 +1,252 @@
-document.addEventListener("click", () => {
-    document.getElementById("tv_video").muted = false;
-}, { once: true });
+//------------------------------------------
+// Gather every TV instance on the page
+// (1 in landscape, 2 stacked in portrait)
+//------------------------------------------
 
-const video = document.getElementById("tv_video");
-
-const track = document.getElementById("channelTrack");
-
-//--------------------------
-// Duplicate Items
-//--------------------------
-
-const originalHTML = track.innerHTML;
-
-// 5 copies
-track.innerHTML =
-originalHTML +
-originalHTML +
-originalHTML +
-originalHTML +
-originalHTML;
-
-//--------------------------
-// Variables
-//--------------------------
-
-let speed = 1;
-let position = 0;
-let isDragging = false;
-
-// width of one original set
-
-const originalCount = track.children.length / 5;
-
-let itemWidth = 0;
-let loopWidth = 0;
-
-let lastSoundPosition = 0;
-
-//--------------------------
-// Measure
-//--------------------------
-
-function calculate(){
-
-    itemWidth = track.children[0].offsetWidth + 20;
-
-    loopWidth = itemWidth * originalCount;
-
-}
-
-window.addEventListener("resize",calculate);
-
-calculate();
-
-//--------------------------
-// Render
-//--------------------------
-
-function render(){
-
-    let x = position;
-
-    while(x <= -loopWidth){
-
-        x += loopWidth;
-
-    }
-
-    while(x > 0){
-
-        x -= loopWidth;
-
-    }
-
-    gsap.set(track,{
-        x
-    });
-
-}
-
-//--------------------------
-// Auto Scroll
-//--------------------------
-
-gsap.ticker.add(() => {
-
-    if (!isDragging) {
-
-        position -= speed;
-
-        // inertia
-        if (Math.abs(velocity) > 0.01) {
-
-            position += velocity * 16;
-
-            velocity *= 0.95;
-
-        }
-
-    }
-
-    render();
-
+const instances = Array.from(document.querySelectorAll(".tv_instance")).map((root) => {
+    return {
+        root,
+        video: root.querySelector(".tv_video"),
+        track: root.querySelector(".channel_track"),
+    };
 });
 
-//------------------------------------------
-// Drag Variables
-//------------------------------------------
-
-let startPointerX = 0;
-let startPosition = 0;
-let velocity = 0;
-let lastPointerX = 0;
-let lastTime = 0;
+// unmute every video on first user interaction (browser autoplay policy)
+document.addEventListener("click", () => {
+    instances.forEach(inst => { inst.video.muted = false; });
+}, { once: true });
 
 //------------------------------------------
-// Draggable
+// Set up the scrolling channel track for
+// EACH instance independently (drag/inertia
+// only affects the track the user touched)
 //------------------------------------------
 
-Draggable.create(track, {
+instances.forEach((inst) => {
 
-    type: "x",
+    const track = inst.track;
+    const originalHTML = track.innerHTML;
 
-    onPress(e) {
+    // 5 copies for a seamless loop
+    track.innerHTML =
+        originalHTML +
+        originalHTML +
+        originalHTML +
+        originalHTML +
+        originalHTML;
 
-        isDragging = true;
+    let speed = 1;
+    let position = 0;
+    let isDragging = false;
 
-        velocity = 0;
+    const originalCount = track.children.length / 5;
 
-        startPointerX = this.pointerX;
+    let itemWidth = 0;
+    let loopWidth = 0;
+    let lastSoundPosition = 0;
 
-        startPosition = position;
+    function calculate() {
+        itemWidth = track.children[0].offsetWidth + 20;
+        loopWidth = itemWidth * originalCount;
+    }
 
-        lastPointerX = this.pointerX;
+    window.addEventListener("resize", calculate);
+    calculate();
 
-        lastTime = performance.now();
+    function render() {
+        let x = position;
 
-    },
+        while (x <= -loopWidth) x += loopWidth;
+        while (x > 0) x -= loopWidth;
 
-    onDrag() {
+        gsap.set(track, { x });
+    }
 
-        const dx = this.pointerX - startPointerX;
+    let startPointerX = 0;
+    let startPosition = 0;
+    let velocity = 0;
+    let lastPointerX = 0;
+    let lastTime = 0;
 
-        position = startPosition + dx;
+    gsap.ticker.add(() => {
+        if (!isDragging) {
+            position -= speed;
 
-        const now = performance.now();
-
-        const dt = now - lastTime;
-
-        if (dt > 0) {
-
-            velocity = (this.pointerX - lastPointerX) / dt;
-
-        }
-
-        lastPointerX = this.pointerX;
-        lastTime = now;
-
-
-        const moved = Math.abs(position - lastSoundPosition);
-
-        const distance = Math.max(10,40-speed*6);
-
-        if(moved >= distance){
-
-            playTick();
-
-            lastSoundPosition = position;
-
+            if (Math.abs(velocity) > 0.01) {
+                position += velocity * 16;
+                velocity *= 0.95;
+            }
         }
 
         render();
+    });
 
-    },
+    Draggable.create(track, {
 
-    onRelease() {
+        type: "x",
 
-        isDragging = false;
+        onPress() {
+            isDragging = true;
+            velocity = 0;
+            startPointerX = this.pointerX;
+            startPosition = position;
+            lastPointerX = this.pointerX;
+            lastTime = performance.now();
+        },
 
+        onDrag() {
+            const dx = this.pointerX - startPointerX;
+            position = startPosition + dx;
+
+            const now = performance.now();
+            const dt = now - lastTime;
+
+            if (dt > 0) {
+                velocity = (this.pointerX - lastPointerX) / dt;
+            }
+
+            lastPointerX = this.pointerX;
+            lastTime = now;
+
+            const moved = Math.abs(position - lastSoundPosition);
+            const distance = Math.max(10, 40 - speed * 6);
+
+            if (moved >= distance) {
+                playTick();
+                lastSoundPosition = position;
+            }
+
+            render();
+        },
+
+        onRelease() {
+            isDragging = false;
+        }
+
+    });
+
+    //------------------------------------------
+    // Per-instance tick-sound pool
+    //------------------------------------------
+
+    const audioPool = [];
+
+    for (let i = 0; i < 15; i++) {
+        const audio = new Audio("assets/audio/scroll.mp3");
+        audio.preload = "auto";
+        audio.volume = 0.35;
+        audioPool.push(audio);
+    }
+
+    let audioIndex = 0;
+
+    function playTick() {
+        const audio = audioPool[audioIndex];
+        audio.currentTime = 0;
+        audio.play().catch(() => {});
+        audioIndex++;
+        if (audioIndex >= audioPool.length) audioIndex = 0;
     }
 
 });
 
-
 //------------------------------------------
-// Audio Pool
+// Channel switching — clicking ANY channel
+// button (in either instance) updates BOTH
+// video tags to the same source, so the
+// two TVs always play the same channel
 //------------------------------------------
 
-const audioPool = [];
+// same breakpoint used in style.css — keep these two in sync
+const mobilePortraitQuery = window.matchMedia("(orientation: portrait) and (max-width: 768px)");
 
-for (let i = 0; i < 15; i++) {
-
-    const audio = new Audio("assets/audio/scroll.mp3");
-
-    audio.preload = "auto";
-
-    audio.volume = 0.35;
-
-    audioPool.push(audio);
-
+function isDualMode() {
+    return mobilePortraitQuery.matches;
 }
 
-let audioIndex = 0;
+function switchChannel(href) {
+    instances.forEach((inst) => {
+        inst.video.pause();
+        inst.video.src = href;
+        inst.video.load();
+    });
 
-function playTick() {
+    // play together once metadata is ready — but only the visible instance(s).
+    // on tablets/desktops the 2nd TV is hidden (rotate hack takes over there),
+    // so we don't start playing/muting audio on something the user can't see
+    instances.forEach((inst, idx) => {
+        if (idx > 0 && !isDualMode()) return;
 
-    const audio = audioPool[audioIndex];
-
-    audio.currentTime = 0;
-
-    audio.play().catch(()=>{});
-
-    audioIndex++;
-
-    if(audioIndex >= audioPool.length){
-
-        audioIndex = 0;
-
-    }
-
+        const tryPlay = () => inst.video.play().catch(() => {});
+        if (inst.video.readyState >= 2) {
+            tryPlay();
+        } else {
+            inst.video.addEventListener("loadeddata", tryPlay, { once: true });
+        }
+    });
 }
 
-
-document.querySelectorAll(".channel_btn").forEach(btn=>{
-
-    btn.onclick=function(e){
-
+document.querySelectorAll(".channel_btn").forEach((btn) => {
+    btn.onclick = function (e) {
         e.preventDefault();
-
-        video.pause();
-
-        video.src=this.href;
-
-        video.load();
-
-        video.play();
-
-    }
-
+        switchChannel(this.getAttribute("href"));
+    };
 });
 
+//------------------------------------------
+// Load a default channel on first paint so
+// both TVs start with something playing
+//------------------------------------------
+
+const firstChannelHref = document.querySelector(".channel_btn")?.getAttribute("href");
+if (firstChannelHref) {
+    switchChannel(firstChannelHref);
+}
+
+//------------------------------------------
+// Keep the two videos in sync over time.
+// Instance 0 is the "master" — instance 1
+// follows its play/pause state and snaps
+// its position back if it drifts.
+//------------------------------------------
+
+if (instances.length > 1) {
+
+    const master = instances[0].video;
+    const follower = instances[1].video;
+
+    setInterval(() => {
+        if (!isDualMode()) return;
+
+        if (Math.abs(follower.currentTime - master.currentTime) > 0.25) {
+            follower.currentTime = master.currentTime;
+        }
+
+        if (master.paused && !follower.paused) follower.pause();
+        if (!master.paused && follower.paused) follower.play().catch(() => {});
+    }, 1000);
+
+    // if the user manually uses the native controls to seek/pause
+    // one of the videos, keep the follower matched to master immediately
+    master.addEventListener("seeked", () => {
+        if (!isDualMode()) return;
+        follower.currentTime = master.currentTime;
+    });
+
+    // when the device flips between mobile-portrait (dual) and
+    // tablet/landscape (single, rotated) modes, start/stop the
+    // hidden 2nd TV's playback so it never plays sound off-screen
+    function syncSecondaryToMode() {
+        if (isDualMode()) {
+            follower.currentTime = master.currentTime;
+            if (!master.paused) follower.play().catch(() => {});
+        } else {
+            follower.pause();
+        }
+    }
+
+    mobilePortraitQuery.addEventListener("change", syncSecondaryToMode);
+    window.addEventListener("resize", syncSecondaryToMode);
+    syncSecondaryToMode();
+
+}
