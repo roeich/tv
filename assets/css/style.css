@@ -264,6 +264,9 @@ body {
 
     html {
         --vw: 1.4vw;
+        min-height: 100svh;
+        background-image: url("../img/bg.webp");
+        background-size: 130%;
     }
     .tv_iframe::before{
         padding-bottom: 96%;
