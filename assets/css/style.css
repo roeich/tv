@@ -224,6 +224,30 @@ body {
     aspect-ratio: 1 / 1;
     display: block;
     pointer-events: none;
+
+    background-image: url("../img/btn-bg/btn-1-bg.webp");
+    background-size: contain;
+    background-repeat: no-repeat;
+    padding: 18%;
+}
+.channel_btn:nth-of-type(5n + 1) img {
+    background-image: url("../img/btn-bg/btn-1-bg.webp");
+}
+
+.channel_btn:nth-of-type(5n + 2) img {
+    background-image: url("../img/btn-bg/btn-2-bg.webp");
+}
+
+.channel_btn:nth-of-type(5n + 3) img {
+    background-image: url("../img/btn-bg/btn-3-bg.webp");
+}
+
+.channel_btn:nth-of-type(5n + 4) img {
+    background-image: url("../img/btn-bg/btn-4-bg.webp");
+}
+
+.channel_btn:nth-of-type(5n) img {
+    background-image: url("../img/btn-bg/btn-5-bg.webp");
 }
 .channel_btn:hover{
     filter: drop-shadow(0px 0px 10px #2ac8ff);
