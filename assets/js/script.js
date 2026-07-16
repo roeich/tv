@@ -8,6 +8,9 @@ const instances = Array.from(document.querySelectorAll(".tv_instance")).map((roo
         root,
         video: root.querySelector(".tv_video"),
         track: root.querySelector(".channel_track"),
+        videoNameEl: root.querySelector(".tv_video_name"),
+        channelNameEl: root.querySelector(".tv_channel_name"),
+        playingEl: root.querySelector(".tv_video_playing"),
     };
 });
 
@@ -164,11 +167,23 @@ function isDualMode() {
     return mobilePortraitQuery.matches;
 }
 
-function switchChannel(href) {
+function switchChannel(href, meta = {}) {
+    const { videoName, channelName, playing } = meta;
+
     instances.forEach((inst) => {
         inst.video.pause();
         inst.video.src = href;
         inst.video.load();
+
+        if (videoName !== undefined && inst.videoNameEl) {
+            inst.videoNameEl.textContent = videoName;
+        }
+        if (channelName !== undefined && inst.channelNameEl) {
+            inst.channelNameEl.textContent = channelName;
+        }
+        if (playing !== undefined && inst.playingEl) {
+            inst.playingEl.textContent = "PLAYING: " + playing;
+        }
     });
 
     // play together once metadata is ready — but only the visible instance(s).
@@ -189,7 +204,11 @@ function switchChannel(href) {
 document.querySelectorAll(".channel_btn").forEach((btn) => {
     btn.onclick = function (e) {
         e.preventDefault();
-        switchChannel(this.getAttribute("href"));
+        switchChannel(this.getAttribute("href"), {
+            videoName: this.dataset.videoName,
+            channelName: this.dataset.channelName,
+            playing: this.dataset.playing,
+        });
     };
 });
 
@@ -198,9 +217,13 @@ document.querySelectorAll(".channel_btn").forEach((btn) => {
 // both TVs start with something playing
 //------------------------------------------
 
-const firstChannelHref = document.querySelector(".channel_btn")?.getAttribute("href");
-if (firstChannelHref) {
-    switchChannel(firstChannelHref);
+const firstChannelBtn = document.querySelector(".channel_btn");
+if (firstChannelBtn) {
+    switchChannel(firstChannelBtn.getAttribute("href"), {
+        videoName: firstChannelBtn.dataset.videoName,
+        channelName: firstChannelBtn.dataset.channelName,
+        playing: firstChannelBtn.dataset.playing,
+    });
 }
 
 //------------------------------------------
